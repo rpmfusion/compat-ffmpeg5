@@ -23,6 +23,8 @@
 %global _with_smb         1
 %global _with_snappy      1
 %global _with_twolame     1
+%global build_type_safety_c 0
+
 %global _with_wavpack     1
 %global _with_webp        1
 %global _with_zmq         1
@@ -45,7 +47,7 @@
 Summary:        Digital VCR and streaming server
 Name:           compat-ffmpeg5%{?flavor}
 Version:        5.1.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        GPLv3+
 URL:            http://ffmpeg.org/
 Source0:        http://ffmpeg.org/releases/ffmpeg-%{version}.tar.xz
@@ -151,15 +153,6 @@ BuildRequires:  zlib-devel
 %{?_with_zmq:BuildRequires: zeromq-devel}
 %{!?_without_zvbi:BuildRequires: zvbi-devel}
 
-
-Conflicts:      libavcodec-free
-Conflicts:      libavdevice-free
-Conflicts:      libavfilter-free
-Conflicts:      libavformat-free
-Conflicts:      libavutil-free
-Conflicts:      libpostproc-free
-Conflicts:      libswresample-free
-Conflicts:      libswscale-free
 %{?_with_vmaf:Recommends:     vmaf-models}
 
 %description
@@ -349,14 +342,19 @@ rm -r %{buildroot}%{_datadir}/%{name}/
 %doc  CREDITS README.md
 %license COPYING.*
 %{_libdir}/lib*.so.*
+%exclude %{_libdir}/libswresample.so.4*
 
 %files devel
 %doc MAINTAINERS doc/APIchanges doc/*.txt
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/lib*.pc
 %{_libdir}/lib*.so
+%{_libdir}/libswresample.so.4*
 
 %changelog
+* Sat Jan 27 2024 Leigh Scott <leigh123linux@gmail.com> - 5.1.4-3
+- Fix file conflict
+
 * Thu Jan 18 2024 Leigh Scott <leigh123linux@gmail.com> - 5.1.4-2
 - rebuilt
 
