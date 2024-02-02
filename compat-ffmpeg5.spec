@@ -47,7 +47,7 @@
 Summary:        Digital VCR and streaming server
 Name:           compat-ffmpeg5%{?flavor}
 Version:        5.1.4
-Release:        3%{?dist}
+Release:        4%{?dist}
 License:        GPLv3+
 URL:            http://ffmpeg.org/
 Source0:        http://ffmpeg.org/releases/ffmpeg-%{version}.tar.xz
@@ -352,6 +352,9 @@ rm -r %{buildroot}%{_datadir}/%{name}/
 %{_libdir}/libswresample.so.4*
 
 %changelog
+* Fri Feb 02 2024 Nicolas Chauvet <kwizart@gmail.com> - 5.1.4-4
+- rebuilt
+
 * Sat Jan 27 2024 Leigh Scott <leigh123linux@gmail.com> - 5.1.4-3
 - Fix file conflict
 
