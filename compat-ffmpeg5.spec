@@ -47,7 +47,7 @@
 Summary:        Digital VCR and streaming server
 Name:           compat-ffmpeg5%{?flavor}
 Version:        5.1.4
-Release:        5%{?dist}
+Release:        6%{?dist}
 License:        GPLv3+
 URL:            http://ffmpeg.org/
 Source0:        http://ffmpeg.org/releases/ffmpeg-%{version}.tar.xz
@@ -352,6 +352,9 @@ rm -r %{buildroot}%{_datadir}/%{name}/
 %{_libdir}/libswresample.so.4*
 
 %changelog
+* Fri Mar 22 2024 Sérgio Basto <sergio@serjux.com> - 5.1.4-6
+- Rebuild for jpegxl (libjxl) 0.10.2
+
 * Sat Feb 03 2024 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 5.1.4-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
